@@ -21,7 +21,8 @@ export default {
       console.log("clicky")
       var payload = {
         itemName: this.itemName,
-        itemPrice: this.itemPrice
+        itemPrice: this.itemPrice,
+        itemId: this.itemId
       }
       this.$store.commit("addToCart", payload);
     }
@@ -31,9 +32,11 @@ export default {
 <style scoped>
   .item-card {
     width: 250px;
+    background-color: white;
     /* border: 1px solid black; */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.153);
-    margin: 10px;
+    margin: 10px 10px 10px 10px;
+    /* margin: 15px; */
     padding: 20px;
     text-align: center;
     border-radius: 5px;

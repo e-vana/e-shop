@@ -13,7 +13,7 @@ export default {
 <style scoped>
 
 .navbar {
-  width: 100%;
+  /* width: 100vw; */
   height: 50px;
   background-color:white;
   padding: 20px;
