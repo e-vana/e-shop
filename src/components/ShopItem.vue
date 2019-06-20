@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="item-card">
-      <img src="https://via.placeholder.com/200/200" alt="">
+      <img :src="itemPictureUrl" alt="">
       <h2>{{ itemName }}</h2>
       <p>${{ itemPrice }}</p>
       <button @click="addToCart">Add to Cart</button>
@@ -14,7 +14,8 @@ export default {
   props: {
     itemName: String,
     itemPrice: Number,
-    itemId: String
+    itemId: String,
+    itemPictureUrl: String
   },
   methods: {
     addToCart: function() {
@@ -22,7 +23,8 @@ export default {
       var payload = {
         itemName: this.itemName,
         itemPrice: this.itemPrice,
-        itemId: this.itemId
+        itemId: this.itemId,
+        itemPictureUrl: this.itemPictureUrl
       }
       this.$store.commit("addToCart", payload);
     }

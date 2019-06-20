@@ -34,16 +34,16 @@
         <input type="text" placeholder="John Doe">
         <label for="">Security Code</label>
         <input type="text" placeholder="123">
-        
+
 
       </div>
     <!-- </transition> -->
 
     <div class="checkout">
       <h3>Total ${{ cartTotal }} </h3>
-      <p>+ Shipping & Handling</p>
+      <p v-if="this.$store.getters.cartItems.length > 0">+ Shipping & Handling</p>
       <button v-if="!checkoutClicked" @click="clearCart();">Clear Cart</button>
-      <button v-if="!checkoutClicked" @click="checkout">Checkout</button>
+      <button v-if="!checkoutClicked && this.$store.getters.cartItems.length > 0" @click="open()">Checkout</button>
       <button v-if="checkoutClicked" @click="checkoutClicked=false">Cancel</button>
 
     </div>
@@ -54,7 +54,7 @@ export default {
   name: 'Cart',
   data() { 
     return {
-      checkoutClicked: true
+      checkoutClicked: false
     }
   },
   methods: {
@@ -70,6 +70,9 @@ export default {
     },
     checkout: function(){
       this.checkoutClicked = true;
+    },
+    open(){
+      this.$emit('open');
     }
   },
   computed: {
@@ -106,7 +109,6 @@ export default {
 
 
 .cart-container {
-  /* padding: 20px 50px 20px 20px; */
   background-color: white;
   padding: 20px;
   margin: 10px 20px 0px 0px;

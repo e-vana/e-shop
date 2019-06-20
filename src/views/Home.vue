@@ -1,28 +1,29 @@
 <template>
   <div class="home">
+    <checkoutModal v-show="checkoutModalVisibile" @close="closeCheckoutModal"/>
     <div class="home-container">
       <div class="row">
         <div class="column9">
           <div class="item-container">
-            <shopItem itemName="Item#1" :itemPrice="44" itemId="1"/>
-            <shopItem itemName="Item#1" :itemPrice="44" itemId="2"/>
-            <shopItem itemName="Item#2" :itemPrice="22" itemId="3"/>
-            <shopItem itemName="Item#2" :itemPrice="22" itemId="4"/>
-            <shopItem itemName="Item#2" :itemPrice="22" itemId="5"/>
-            <shopItem itemName="Item#2" :itemPrice="22" itemId="6"/>
-            <shopItem itemName="Item#2" :itemPrice="22" itemId="7"/>
+            <shopItem itemName="Item#1" :itemPrice="44" itemId="1" itemPictureUrl="https://placeimg.com/200/200/tech"/>
+            <shopItem itemName="Item#1" :itemPrice="44" itemId="2" itemPictureUrl="https://placeimg.com/200/200/tech"/>
+            <shopItem itemName="Item#2" :itemPrice="22" itemId="3" itemPictureUrl="https://placeimg.com/200/200/tech"/>
+            <shopItem itemName="Item#2" :itemPrice="22" itemId="4" itemPictureUrl="https://placeimg.com/200/200/tech"/>
+            <shopItem itemName="Item#2" :itemPrice="22" itemId="5" itemPictureUrl="https://placeimg.com/200/200/tech"/>
+            <shopItem itemName="Item#2" :itemPrice="22" itemId="6" itemPictureUrl="https://placeimg.com/200/200/tech"/>
+            <!-- <shopItem itemName="Item#2" :itemPrice="22" itemId="7"/>
             <shopItem itemName="Item#2" :itemPrice="22" itemId="8"/>
             <shopItem itemName="Item#2" :itemPrice="22" itemId="9"/>
             <shopItem itemName="Item#2" :itemPrice="22" itemId="10"/>
             <shopItem itemName="Item#2" :itemPrice="22" itemId="11"/>
-            <shopItem itemName="Item#2" :itemPrice="22" itemId="12"/>
+            <shopItem itemName="Item#2" :itemPrice="22" itemId="12"/> -->
           </div>
         </div>
         <div  v-if="!isCartMinimized" class="column3">
           <!-- Cart Container -->
           <div>
             <transition name="fade">
-              <cart v-if="!this.$store.getters.cartMinimized"/>
+              <cart v-if="!this.$store.getters.cartMinimized" @open="showCheckoutModal"/>
               <button v-if="this.$store.getters.cartMinimized" @click="minimizeCart()">Show Cart</button>
             </transition>
           </div>
@@ -39,23 +40,30 @@
 // @ is an alias to /src
 import shopItem from '@/components/ShopItem.vue'
 import cart from '@/components/Cart.vue'
+import checkoutModal from '@/components/CheckoutModal.vue'
 export default {
   name: 'home',
   components: {
     shopItem,
-    cart
+    cart,
+    checkoutModal
   },
   data() { 
     return {
-      itemContainerVW: '',
-      cartContainerVW: '',
       isCartMinimized: false,
+      checkoutModalVisibile: false
     }
   },
   methods: {
     minimizeCart: function(){
       this.$store.commit("minimizeCart");
     },
+    showCheckoutModal() {
+      this.checkoutModalVisibile = true;
+    },
+    closeCheckoutModal() {
+      this.checkoutModalVisibile = false;
+    }
   },
   computed: {
     cartMinimizedState: function(){
@@ -122,6 +130,9 @@ export default {
 
 .home-container {
   background-color: rgb(226, 226, 226);
+  /* height: calc(100vh - 90px); */
+  padding: 0px 0px 168px 0px;
+  height: 100%;
 }
 
 .item-container {
