@@ -19,18 +19,18 @@
             <shopItem itemName="Item#2" :itemPrice="22" itemId="12"/> -->
           </div>
         </div>
-        <div  v-if="!isCartMinimized" class="column3">
+        <div class="column3">
           <!-- Cart Container -->
           <div>
             <transition name="fade">
               <cart v-if="!this.$store.getters.cartMinimized" @open="showCheckoutModal"/>
-              <button v-if="this.$store.getters.cartMinimized" @click="minimizeCart()">Show Cart</button>
             </transition>
           </div>
         </div>
-        <div v-if="isCartMinimized" class="column1">
-          <button>show cart</button>
-        </div>
+      </div>
+      <div class="row2">
+        <cart v-if="!this.$store.getters.cartMinimized" @open="showCheckoutModal"/>
+
       </div>
     </div>
   </div>
@@ -103,11 +103,19 @@ export default {
   width: 5vw;
 }
 
+
 .row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+}
+.row2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 .column3 {
   display: flex;
@@ -161,6 +169,28 @@ export default {
   margin: 0px 5px 0px 0px;
   padding: 10px;
   border: none;
+}
+
+@media only screen and (max-width: 1240px) {
+  .column9 {
+    flex: 2;
+  }
+  .column3 {
+    flex: 1;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .column9 {
+    flex: 2;
+  }
+  .column3 {
+    display: none;
+  }
+}
+@media only screen and (min-width: 640px) {
+  .row2 {
+    display: none;
+  }
 }
 
 </style>

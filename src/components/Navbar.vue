@@ -14,7 +14,7 @@ export default {
 
 .navbar {
   /* width: 100vw; */
-  height: 50px;
+  height: 100%;
   background-color:white;
   padding: 20px;
   font-weight: lighter;
@@ -22,7 +22,11 @@ export default {
   text-align: center;
 }
 
-
+@media only screen and (max-width: 660px) {
+  .navbar {
+    font-size: 14px;
+  }
+}
 </style>
 
 

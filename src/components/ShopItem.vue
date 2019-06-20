@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     addToCart: function() {
-      console.log("clicky")
+      // console.log("clicky")
       var payload = {
         itemName: this.itemName,
         itemPrice: this.itemPrice,
@@ -32,26 +32,38 @@ export default {
 }
 </script>
 <style scoped>
+.item-card {
+  width: 250px;
+  background-color: white;
+  /* border: 1px solid black; */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.153);
+  margin: 10px 10px 10px 10px;
+  /* margin: 15px; */
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+.item-card img {
+  width: 100%;
+  object-fit: cover;
+  
+}
+.item-card button {
+  padding: 10px;
+  border: none;
+}
+@media only screen and (max-width: 1240px) {
   .item-card {
-    width: 250px;
-    background-color: white;
-    /* border: 1px solid black; */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.153);
-    margin: 10px 10px 10px 10px;
-    /* margin: 15px; */
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
+    width: 150px;
   }
-  .item-card img {
-    width: 100%;
-    object-fit: cover;
-    
+}
+@media only screen and (max-width: 640px) {
+  .item-card {
+    width: 125px;
+    font-size: 13px;
+    margin: 5px 5px;
   }
-  .item-card button {
-    padding: 10px;
-    border: none;
-  }
+}
 </style>
 
 

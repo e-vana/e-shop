@@ -170,6 +170,12 @@ hr {
 .cart-checkout input {
   box-sizing: border-box
 }
+
+@media only screen and (max-width: 640px) {
+  .cart-container {
+    font-size: 13px;
+  }
+}
 </style>
 
 

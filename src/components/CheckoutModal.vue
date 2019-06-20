@@ -253,4 +253,20 @@ button {
   padding: 10px;
   border: none;
 }
+@media only screen and (max-width: 905px) {
+  .modal {
+    width: 600px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .modal {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .modal {
+    width: 350px;
+    font-size: 13px;
+  }
+}
 </style>
